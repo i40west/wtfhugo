@@ -60,6 +60,9 @@
                 {{- end }}
             {{- else }}
                 {{- $v := partial "wtf.html" $value1 }}
+                {{- if and $v (eq $key1 "email") }}
+                    {{- $v = "[set but redacted]" }}
+                {{- end }}
                 {{- $scr.Set $key1 $v }}
             {{- end }}
         {{- end }}
@@ -116,6 +119,9 @@
 
     {{- range $idx, $elem := $varNames }}
         {{- $v := partial "wtf.html" (index $varSymbols $idx) }}
+        {{- if and $v (eq $elem "AuthorEmail") }}
+            {{- $v = "[set but redacted]" }}
+        {{- end }}
         {{- $scr.Set $elem $v }}
     {{- end }}
     {{- range $idx, $elem := $linkNames }}
