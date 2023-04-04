@@ -1,0 +1,21 @@
+name = "WTFHugo"
+license = "GPL-3.0"
+description = "A Hugo debug overlay"
+homepage = "https://github.com/i40west/wtfhugo"
+demosite = ""
+tags = [
+  "hugo",
+  "debug",
+  "development",
+  "theme"
+]
+# min_version = "0.108.0" # no idea.
+
+[author]
+  name = "Jeremy Nixon"
+  homepage = "https://i40west.io"
+
+[original]
+  name = "hugo-debugprint"
+  homepage = "https://github.com/kaushalmodi/hugo-debugprint"
+  repo = "https://github.com/kaushalmodi/hugo-debugprint"

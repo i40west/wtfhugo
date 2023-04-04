@@ -1,0 +1,3 @@
+# WTFHugo
+
+Hugo debugging.

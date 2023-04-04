@@ -1,0 +1,6 @@
+{{- $wtfpage := partial "wtf.html" .Page }}
+{{- $wtfsite := partial "wtf.html" .Site }}
+<script id="wtfhugo" type="application/json">
+{{ (dict "Page" $wtfpage "Site" $wtfsite) | jsonify (dict "prefix" " " "indent" "  ") | safeJS }}
+</script>
+<script type="module" src="{{ "wtfhugo.js" | relURL }}"></script>
