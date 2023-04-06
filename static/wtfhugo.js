@@ -34,6 +34,7 @@ class WTFHugo extends HTMLElement {
         const button = document.createElement('div');
         button.innerHTML = 'WTF';
         button.style.cssText = `
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
             position: fixed;
             bottom: 0;
             right: 0;
