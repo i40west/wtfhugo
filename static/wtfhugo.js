@@ -58,6 +58,7 @@ class WTFHugo extends HTMLElement {
         const overlayStyleTag = document.createElement('style');
         overlayStyleTag.innerHTML = `
             table {
+                font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
                 font-size: 15px;
                 background-color: transparent;
                 max-width: 100%;
