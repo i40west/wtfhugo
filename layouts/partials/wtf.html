@@ -11,6 +11,7 @@
 {{- $typeIsMap                  := (findRE "^(map[[].+[]]|.*SiteSocial|.*navigation\\.Menus$|hugolib\\.AuthorList|hugolib\\.Taxonomy|maps\\.Params)" $type) }} <!-- match ^map[*] -->
 
 {{- $typeIsSiteInfo             := (eq "*hugolib.SiteInfo" $type) }}
+{{- $typeIsSiteWrapper          := (eq "*page.siteWrapper" $type) }}
 {{- $typeIsGitInfo              := (findRE "^.*gitmap\\.GitInfo" $type) }}
 {{- $typeIsPageOutputFormat     := (eq "page.OutputFormat" $type)}}
 {{- $typeIsOutputFormat         := (eq "output.Format" $type) }}
@@ -21,7 +22,7 @@
 {{- $typeIsMenuEntry            := (findRE "navigation\\.MenuEntry$" $type) }}
 {{- $typeIsOrderedTaxonomyEntry := (eq "hugolib.OrderedTaxonomyEntry" $type) }}
 {{- $typeIsWeightedPage         := (eq "hugolib.WeightedPage" $type) }}
-{{- $typeIsStruct               := (or $typeIsSiteInfo $typeIsGitInfo $typeIsOutputFormat $typeIsFileInfo $typeIsPage $typeIsMenuEntry $typeIsOrderedTaxonomyEntry $typeIsPageOutputFormat) }}
+{{- $typeIsStruct               := (or $typeIsSiteWrapper $typeIsSiteInfo $typeIsGitInfo $typeIsOutputFormat $typeIsFileInfo $typeIsPage $typeIsMenuEntry $typeIsOrderedTaxonomyEntry $typeIsPageOutputFormat) }}
 {{- $typeIsInterface            := (or $typeIsResource) }}
                                 <!-- .Page.Data.Term when empty has 3c6e696c3e as its type, no clue -->
 {{- $typeIsNothing              := (or (eq (printf "%x" $type) "3c6e696c3e") (eq "page.zeroFile" $type) ) }}
@@ -78,9 +79,9 @@
     {{- $linkListNames := (slice) }}
     {{- $linkListSymbols := (slice) }}
 
-    {{- if $typeIsSiteInfo }} <!-- https://github.com/gohugoio/hugo/blob/master/hugolib/site.go -->
-        {{- $varNames   = (slice "Title" "Author" "Social" "LastChange" "Copyright" "RSSLink" "LanguageCode" "Language.Lang" "BuildDrafts" "IsServer" "Params" "Menus") }}
-        {{- $varSymbols = (slice .Title  .Author  .Social  .LastChange  .Copyright  .RSSLink  .LanguageCode  .Language.Lang  .BuildDrafts  .IsServer  .Params  .Menus ) }}
+    {{- if (or $typeIsSiteWrapper $typeIsSiteInfo) }} <!-- https://github.com/gohugoio/hugo/blob/master/hugolib/site.go -->
+        {{- $varNames   = (slice "Title" "Author" "Social" "LastChange" "Copyright" "LanguageCode" "Language.Lang" "BuildDrafts" "IsServer" "Params" "Menus") }}
+        {{- $varSymbols = (slice .Title  .Author  .Social  .LastChange  .Copyright  .LanguageCode  .Language.Lang  .BuildDrafts  .IsServer  .Params  .Menus ) }}
 
     {{- else if $typeIsGitInfo }} <!-- https://github.com/bep/gitmap/blob/master/gitmap.go -->
         {{- $varNames   = (slice "Hash" "AbbreviatedHash" "Subject" "AuthorName" "AuthorEmail" "AuthorDate") }}
