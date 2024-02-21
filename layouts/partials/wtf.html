@@ -18,7 +18,7 @@
 {{- $typeIsResource             := (findRE "^\\*resource" $type) }}
 {{- $typeIsPage                 := (findRE "^(\\*hugolib\\.Page|.*hugolib\\.pageState)" $type) }}
 {{- $typeIsMediaType            := (eq "media.Type" $type) }}
-{{- $typeIsFileInfo             := (findRE "^\\*(hugolib|source)\\.[fF]ile(Info)?$" $type) }} <!-- terms pages for e.g. uses source.FileInfo, regular pages using hugolib.fileInfo -->
+{{- $typeIsFileInfo             := (findRE "^\\*(hugolib\\.fileInfo|source\\.File)$" $type) }} <!-- terms pages for e.g. uses source.File, regular pages using hugolib.fileInfo -->
 {{- $typeIsMenuEntry            := (findRE "navigation\\.MenuEntry$" $type) }}
 {{- $typeIsOrderedTaxonomyEntry := (eq "hugolib.OrderedTaxonomyEntry" $type) }}
 {{- $typeIsWeightedPage         := (eq "hugolib.WeightedPage" $type) }}
@@ -97,7 +97,7 @@
 
     {{- else if $typeIsFileInfo }}
         <!-- https://github.com/gohugoio/hugo/blob/master/hugolib/fileInfo.go (*hugolib.fileInfo - used by regular pages)  -->
-        <!-- https://github.com/gohugoio/hugo/blob/master/source/fileInfo.go (*source.FileInfo - used by term pages) -->
+        <!-- https://github.com/gohugoio/hugo/blob/master/source/fileInfo.go (*source.File - used by term pages) -->
         {{- $varNames   = (slice "BaseFileName" "TranslationBaseName" "Lang" "Section" "LogicalName" "Dir" "Ext" "Path") }}
         {{- $varSymbols = (slice .BaseFileName  .TranslationBaseName  .Lang  .Section  .LogicalName  .Dir  .Ext  .Path ) }}
 
