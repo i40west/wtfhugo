@@ -97,7 +97,7 @@
 
     {{- else if $typeIsFileInfo }}
         <!-- https://github.com/gohugoio/hugo/blob/master/hugolib/fileInfo.go (*hugolib.fileInfo - used by regular pages)  -->
-        <!-- https://github.com/gohugoio/hugo/blob/master/source/fileInfo.go (*source.FileInfo - used by term pages) -->
+        <!-- https://github.com/gohugoio/hugo/blob/master/source/fileInfo.go (*source.File - used by term pages) -->
         {{- $varNames   = (slice "BaseFileName" "TranslationBaseName" "Lang" "Section" "LogicalName" "Dir" "Ext" "Path") }}
         {{- $varSymbols = (slice .BaseFileName  .TranslationBaseName  .Lang  .Section  .LogicalName  .Dir  .Ext  .Path ) }}
 
