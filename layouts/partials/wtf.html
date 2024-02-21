@@ -18,7 +18,7 @@
 {{- $typeIsResource             := (findRE "^\\*resource" $type) }}
 {{- $typeIsPage                 := (findRE "^(\\*hugolib\\.Page|.*hugolib\\.pageState)" $type) }}
 {{- $typeIsMediaType            := (eq "media.Type" $type) }}
-{{- $typeIsFileInfo             := (findRE "^\\*(hugolib|source)\\.[fF]ileInfo$" $type) }} <!-- terms pages for e.g. uses source.FileInfo, regular pages using hugolib.fileInfo -->
+{{- $typeIsFileInfo             := (findRE "^\\*(hugolib|source)\\.[fF]ile(Info)?$" $type) }} <!-- terms pages for e.g. uses source.FileInfo, regular pages using hugolib.fileInfo -->
 {{- $typeIsMenuEntry            := (findRE "navigation\\.MenuEntry$" $type) }}
 {{- $typeIsOrderedTaxonomyEntry := (eq "hugolib.OrderedTaxonomyEntry" $type) }}
 {{- $typeIsWeightedPage         := (eq "hugolib.WeightedPage" $type) }}
@@ -80,8 +80,8 @@
     {{- $linkListSymbols := (slice) }}
 
     {{- if (or $typeIsSiteWrapper $typeIsSiteInfo) }} <!-- https://github.com/gohugoio/hugo/blob/master/hugolib/site.go -->
-        {{- $varNames   = (slice "Title" "Author" "Social" "LastChange" "Copyright" "LanguageCode" "Language.Lang" "BuildDrafts" "IsServer" "Params" "Menus") }}
-        {{- $varSymbols = (slice .Title  .Author  .Social  .LastChange  .Copyright  .LanguageCode  .Language.Lang  .BuildDrafts  .IsServer  .Params  .Menus ) }}
+        {{- $varNames   = (slice "Title" "Author" "Social" "Lastmod" "Copyright" "LanguageCode" "Language.Lang" "BuildDrafts" "Params" "Menus") }}
+        {{- $varSymbols = (slice .Title  .Author  .Social  .Lastmod  .Copyright  .LanguageCode  .Language.Lang  .BuildDrafts  .Params  .Menus ) }}
 
     {{- else if $typeIsGitInfo }} <!-- https://github.com/bep/gitmap/blob/master/gitmap.go -->
         {{- $varNames   = (slice "Hash" "AbbreviatedHash" "Subject" "AuthorName" "AuthorEmail" "AuthorDate") }}
@@ -110,10 +110,10 @@
         {{- $varSymbols = (slice .Name  .Count  .Term  .WeightedPages ) }}
 
     {{- else if $typeIsPage }} <!-- https://github.com/gohugoio/hugo/blob/master/hugolib/page.go -->
-        {{- $varNames   = (slice "Name" "Title" "ResourceType" "Kind" "Section" "Weight" "Draft" "Type" "Layout" "BundleType" "Permalink" "RelPermalink" "IsHome" "IsNode" "IsPage" "IsSection" "File" "Resources" "OutputFormats" "Language.Lang" "Params" "Data.Singular" "Data.Plural" "Data.Term") }}
-        {{- $varSymbols = (slice .Name  .Title  .ResourceType  .Kind  .Section  .Weight  .Draft  .Type  .Layout  .BundleType  .Permalink  .RelPermalink  .IsHome  .IsNode  .IsPage  .IsSection  .File  .Resources  .OutputFormats  .Language.Lang  .Params  .Data.Singular  .Data.Plural  .Data.Term ) }}
-        {{- $linkNames   = (slice "NextPage" "PrevPage" "NextInSection" "PrevInSection" "CurrentSection" "Parent") }}
-        {{- $linkSymbols = (slice .NextPage  .PrevPage  .NextInSection  .PrevInSection  .CurrentSection  .Parent ) }}
+        {{- $varNames   = (slice "Name" "Title" "ResourceType" "Kind" "Section" "Weight" "Draft" "Type" "Lastmod" "Layout" "BundleType" "Permalink" "RelPermalink" "Path" "IsHome" "IsNode" "IsPage" "IsSection" "File" "Resources" "OutputFormats" "Language.Lang" "Params" "Data.Singular" "Data.Plural" "Data.Term") }}
+        {{- $varSymbols = (slice .Name  .Title  .ResourceType  .Kind  .Section  .Weight  .Draft  .Type  .Lastmod  .Layout  .BundleType  .Permalink  .RelPermalink  .Path  .IsHome  .IsNode  .IsPage  .IsSection  .File  .Resources  .OutputFormats  .Language.Lang  .Params  .Data.Singular  .Data.Plural  .Data.Term ) }}
+        {{- $linkNames   = (slice "Next" "Prev" "NextInSection" "PrevInSection" "CurrentSection" "Parent") }}
+        {{- $linkSymbols = (slice .Next  .Prev  .NextInSection  .PrevInSection  .CurrentSection  .Parent ) }}
         {{- $linkListNames   = (slice "Pages" "RegularPages" "Sections") }}
         {{- $linkListSymbols = (slice .Pages  .RegularPages  .Sections) }}
     {{- end }}
