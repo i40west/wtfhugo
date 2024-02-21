@@ -18,6 +18,10 @@ the close button to dismiss the pop-up.
 
 ## 🤓 How to use it
 
+> [!IMPORTANT]
+> WTFHugo has been updated for changes in Hugo 0.123 and will no longer
+> work with earlier versions.
+
 It's a theme component. Add this repo as a submodule in your `themes` directory:
 
 ```bash
