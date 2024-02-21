@@ -18,7 +18,7 @@
 {{- $typeIsResource             := (findRE "^\\*resource" $type) }}
 {{- $typeIsPage                 := (findRE "^(\\*hugolib\\.Page|.*hugolib\\.pageState)" $type) }}
 {{- $typeIsMediaType            := (eq "media.Type" $type) }}
-{{- $typeIsFileInfo             := (findRE "^\\*(hugolib|source)\\.[fF]ile(Info)?$" $type) }} <!-- terms pages for e.g. uses source.FileInfo, regular pages using hugolib.fileInfo -->
+{{- $typeIsFileInfo             := (findRE "^\\*(hugolib\\.fileInfo|source\\.FileInfo)$" $type) }} <!-- terms pages for e.g. uses source.FileInfo, regular pages using hugolib.fileInfo -->
 {{- $typeIsMenuEntry            := (findRE "navigation\\.MenuEntry$" $type) }}
 {{- $typeIsOrderedTaxonomyEntry := (eq "hugolib.OrderedTaxonomyEntry" $type) }}
 {{- $typeIsWeightedPage         := (eq "hugolib.WeightedPage" $type) }}
