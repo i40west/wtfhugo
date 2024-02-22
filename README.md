@@ -56,3 +56,8 @@ And that's it. You can call it conditionally, of course:
 {{- end -}}
 ```
 
+## 😡 Note
+
+I have been unable to find a way to make `FileInfo` work consistently
+anymore, so it's disabled for now. Hugo's template language is a den
+of misery, and I'm about done trying to make it not suck.
