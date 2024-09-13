@@ -51,7 +51,7 @@ Call `wtfhugo` in your site's `<head>`:
 And that's it. You can call it conditionally, of course:
 
 ```
-{{- if and (.Param "WTFHugo") site.IsServer -}}
+{{- if and (.Param "WTFHugo") hugo.IsServer -}}
   {{- partial "wtfhugo.html" . }}
 {{- end -}}
 ```
