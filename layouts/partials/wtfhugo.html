@@ -1,3 +1,9 @@
+{{- /* Enforce minimum required Hugo version. */}}
+{{- $minHugoVersion := "0.123.0" }}
+{{- if lt hugo.Version $minHugoVersion }}
+  {{- errorf "WTFHugo requires Hugo v%s or later. Please upgrade Hugo to v%s or higher to use WTFHugo." $minHugoVersion $minHugoVersion }}
+{{- end -}}
+
 {{- $wtfpage := partial "wtf.html" .Page }}
 {{- $wtfsite := partial "wtf.html" .Site }}
 <script id="wtfhugo" type="application/json">
