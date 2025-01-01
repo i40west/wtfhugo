@@ -82,7 +82,7 @@
 
     {{- if (or $typeIsSiteWrapper $typeIsSiteInfo) }} <!-- https://github.com/gohugoio/hugo/blob/master/hugolib/site.go -->
         {{- $varNames   = (slice "Title" "Author" "Social" "Lastmod" "Copyright" "LanguageCode" "Language.Lang" "BuildDrafts" "Params" "Menus") }}
-        {{- $varSymbols = (slice .Title  .Author  .Social  .Lastmod  .Copyright  .LanguageCode  .Language.Lang  .BuildDrafts  .Params  .Menus ) }}
+        {{- $varSymbols = (slice .Title  .Author  .Params.Social  .Lastmod  .Copyright  .LanguageCode  .Language.Lang  .BuildDrafts  .Params  .Menus ) }}
 
     {{- else if $typeIsGitInfo }} <!-- https://github.com/bep/gitmap/blob/master/gitmap.go -->
         {{- $varNames   = (slice "Hash" "AbbreviatedHash" "Subject" "AuthorName" "AuthorEmail" "AuthorDate") }}
